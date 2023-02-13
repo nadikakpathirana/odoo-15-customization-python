@@ -1,0 +1,12 @@
+# login to the user postgres
+$ sudo su postgres
+
+$ psql
+
+# connect to a database
+$ \c db_name
+
+# now can perform any query
+# eg-
+select * from remedy_patient;
+
