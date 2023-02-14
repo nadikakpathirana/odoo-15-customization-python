@@ -7,6 +7,7 @@
     'description': """ test description """,
     'depends': [],
     'data': [
+        'security/ir.model.access.csv',
         'views/menu.xml',
         'views/patient_view.xml'
     ],  # use to import xml files
