@@ -10,9 +10,10 @@
               parent="menu_hospital_root"
               sequence="0"/>
 
-    <menuitem id="menu_patient"
-              name="Patient"
-              action="action_hospital_patient"
+    <menuitem id="menu_customers"
+              name="Customers"
+              action="account.res_partner_action_customer"
               parent="menu_patient_master"
               sequence="0"/>
+
 </odoo>
