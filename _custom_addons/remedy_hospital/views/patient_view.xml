@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
 
+    <record id="view_remedy_patient_search" model="ir.ui.view">
+        <field name="name">remedy.patient.search</field>
+        <field name="model">remedy.patient</field>
+        <field name="arch" type="xml">
+            <search>
+                <!-- filter domain is for search through multiple fields. -->
+                <!-- Below one is for 3 fields -->
+                <!-- "['|', '|', ('name', 'ilike', self), ('ref', 'ilike', self), ('ref', 'ilike', self)]" -->
+                <field name="name" string="Patient Name"
+                       filter_domain="['|', ('name', 'ilike', self), ('ref', 'ilike', self)]"/>
+                <field name="ref" string="Reference"/>
+            </search>
+        </field>
+    </record>
+
     <record id="view_remedy_patient_tree" model="ir.ui.view">
         <field name="name">remedy.patient.tree</field>
         <field name="model">remedy.patient</field>
@@ -8,6 +23,7 @@
             <tree>
                 <field name="name" string="Patient Name"/>
                 <field name="age"/>
+                <field name="ref"/>
                 <field name="gender"/>
             </tree>
         </field>
@@ -25,6 +41,7 @@
                             <field name="age"/>
                         </group>
                         <group>
+                            <field name="ref"/>
                             <field name="gender"/>
                         </group>
                     </group>
