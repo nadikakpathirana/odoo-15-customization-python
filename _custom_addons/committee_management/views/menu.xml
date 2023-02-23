@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <menuitem id="menu_committee_management_root"
+              name="Committee Management"
+              web_icon="committee_management,static/description/icon.png"
+              sequence="-100"/>
+
+
+
+    <menuitem id="menu_committee_meeting"
+              name="Committee Meeting"
+              action="account.res_partner_action_customer"
+              parent="menu_committee_management_root"
+              sequence="2"/>
+
+    <menuitem id="menu_committee_type"
+              name="Committee Type"
+              action="account.res_partner_action_customer"
+              parent="menu_committee_management_root"
+              sequence="3"/>
+
+</odoo>

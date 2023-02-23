@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <record id="view_committee_committee_search" model="ir.ui.view">
+        <field name="name">committee.committee.search</field>
+        <field name="model">committee.committee</field>
+        <field name="arch" type="xml">
+            <search>
+                <!-- filter domain is for search through multiple fields. -->
+                <!-- Below one is for 3 fields -->
+                <!-- "['|', '|', ('name', 'ilike', self), ('ref', 'ilike', self), ('ref', 'ilike', self)]" -->
+<!--                <field name="name" string="Committee Name"-->
+<!--                       filter_domain="['|', ('name', 'ilike', self), ('ref', 'ilike', self)]"/>-->
+                <field name="name" string="Committee Name"/>
+<!--                <field name="ref" string="Reference"/>-->
+            </search>
+        </field>
+    </record>
+
+    <record id="view_committee_committee_tree" model="ir.ui.view">
+        <field name="name">committee.committee.tree</field>
+        <field name="model">committee.committee</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" string="Committee Name"/>
+                <field name="title"/>
+                <field name="type"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_committee_committee_form" model="ir.ui.view">
+        <field name="name">committee.committee.form</field>
+        <field name="model">committee.committee</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="title"/>
+                        </group>
+                        <group>
+                            <field name="type"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_committee_committee" model="ir.actions.act_window">
+        <field name="name">Committees</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">committee.committee</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create our first committee !
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="menu_committee_root"
+          name="Committee"
+          action="action_committee_committee"
+          parent="menu_committee_management_root"
+          sequence="1"/>
+
+
+</odoo>
