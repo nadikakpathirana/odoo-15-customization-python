@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
     <menuitem id="menu_complainer_"
-              name="Complainer"
+              name="Complainers"
               action="crede_complainer_registration.action_contacts"
               parent="menu_complainer_root"
               sequence="8"/>

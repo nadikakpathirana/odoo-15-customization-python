@@ -2,8 +2,8 @@
 <odoo>
 
     <menuitem id="menu_committee_meeting"
-              name="Committee Meeting"
+              name="Attend Meeting"
               action="mail.action_discuss"
               parent="menu_meeting_root"
-              sequence="4"/>
+              sequence="5"/>
 </odoo>

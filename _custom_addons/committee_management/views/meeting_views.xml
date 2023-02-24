@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_committee_meeting_form" model="ir.ui.view">
+        <field name="name">committee.meeting.form</field>
+        <field name="model">committee.meeting</field>
+        <field name="arch" type="xml">
+            <form string="Committee Meeting">
+                <sheet>
+                    <group>
+                        <field name="name" required="1"/>
+                        <field name="members"/>
+                        <field name="date" required="1"/>
+                        <field name="location"/>
+                        <field name="agenda"/>
+                        <field name="minutes"/>
+                        <field name="attendees"/>
+                        <field name="state" readonly="1"/>
+
+                        <div class="oe_title">
+                            <label for="state" class="oe_edit_only" attrs="{'invisible': [('state', '=', 'cancelled')]}"/>
+                            <h2>
+                                <field name="state" widget="statusbar" statusbar_visible="scheduled,held,cancelled"/>
+                                <button name="action_schedule_meeting" string="Schedule" type="object" class="btn-primary" attrs="{'invisible': [('state', '=', 'held')]}"/>
+                                <button name="action_hold_meeting" string="Hold" type="object" class="btn-primary" attrs="{'invisible': [('state', '!=', 'scheduled')]}"/>
+                                <button name="action_cancel_meeting" string="Cancel" type="object" class="btn-danger" attrs="{'invisible': [('state', '!=', 'scheduled')]}"/>
+                            </h2>
+                        </div>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_committee_meeting_tree" model="ir.ui.view">
+        <field name="name">committee.meeting.tree</field>
+        <field name="model">committee.meeting</field>
+        <field name="arch" type="xml">
+            <tree string="Committee Meetings">
+                <field name="name"/>
+                <field name="members"/>
+                <field name="date"/>
+                <field name="location"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_committee_meeting_search" model="ir.ui.view">
+        <field name="name">committee.meeting.search</field>
+        <field name="model">committee.meeting</field>
+        <field name="arch" type="xml">
+            <search string="Search Committee Meetings">
+                <field name="name"/>
+                <field name="members"/>
+                <field name="date"/>
+                <field name="location"/>
+                <field name="state"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="view_committee_meeting_kanban" model="ir.ui.view">
+        <field name="name">committee.meeting.kanban</field>
+        <field name="model">committee.meeting</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="name"/>
+                <field name="members"/>
+                <field name="date"/>
+                <field name="location"/>
+                <field name="state"/>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="action_committee_meeting" model="ir.actions.act_window">
+        <field name="name">Committee Meetings</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">committee.meeting</field>
+        <field name="view_mode">tree,form,kanban</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create our first meeting here !
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="menu_committee_meeting_view"
+          name="Committee Meetings"
+          action="action_committee_meeting"
+          parent="menu_meeting_root"
+          sequence="3"/>
+</odoo>

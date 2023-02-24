@@ -42,6 +42,11 @@
                     <field name="state" widget="statusbar" statusbar_visible="new,approved,banned"/>
                 </header>
                 <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name"/>
+                        </h1>
+                    </div>
                     <group>
                         <group>
                             <field name="name"/>
@@ -52,6 +57,30 @@
                             <field name="type"/>
                         </group>
                     </group>
+                    <notebook>
+                        <page string="Page 01">
+                            <group>
+                                <group>
+                                    <field name="test1"/>
+                                    <field name="test2"/>
+                                </group>
+                                <group>
+                                    <field name="test3"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Page 02">
+                            <group>
+                                <group>
+                                    <field name="test4"/>
+                                    <field name="test5"/>
+                                </group>
+                                <group>
+                                    <field name="test6"/>
+                                </group>
+                            </group>
+                        </page>
+                    </notebook>
                 </sheet>
             </form>
         </field>
@@ -71,14 +100,14 @@
     </record>
 
     <menuitem id="menu_committee"
-              name="Committee"
+              name="Committees"
               action="action_committee_committee"
               parent="menu_committee_root"
               sequence="3"/>
 
 
     <menuitem id="menu_committee_type"
-              name="Committee Type"
+              name="Committee Types"
               action="action_committee_committee"
               parent="menu_committee_root"
               sequence="4"/>

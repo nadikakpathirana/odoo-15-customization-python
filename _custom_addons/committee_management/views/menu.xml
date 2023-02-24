@@ -7,17 +7,17 @@
               sequence="-100"/>
 
     <menuitem id="menu_committee_root"
-              name="Committee"
+              name="Committees"
               parent="menu_committee_management_root"
               sequence="2"/>
 
-<!--    <menuitem id="menu_meeting_root"-->
-<!--              name="Meeting"-->
-<!--              parent="menu_committee_management_root"-->
-<!--              sequence="3"/>-->
+    <menuitem id="menu_meeting_root"
+              name="Meetings"
+              parent="menu_committee_management_root"
+              sequence="3"/>
 
     <menuitem id="menu_complainer_root"
-              name="Complainer"
+              name="Complainers"
               action="crede_complainer_registration.action_contacts"
               parent="menu_committee_management_root"
               sequence="4"/>
