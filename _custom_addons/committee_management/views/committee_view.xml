@@ -62,11 +62,18 @@
         </field>
     </record>
 
-    <menuitem id="menu_committee_root"
-          name="Committee"
-          action="action_committee_committee"
-          parent="menu_committee_management_root"
-          sequence="1"/>
+    <menuitem id="menu_committee"
+              name="Committee"
+              action="action_committee_committee"
+              parent="menu_committee_root"
+              sequence="1"/>
+
+
+    <menuitem id="menu_committee_type"
+              name="Committee Type"
+              action="account.res_partner_action_customer"
+              parent="menu_committee_root"
+              sequence="3"/>
 
 
 </odoo>

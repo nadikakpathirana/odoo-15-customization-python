@@ -47,3 +47,6 @@ package.json
 /man/
 /share/
 /src/
+
+#crede modules
+_custom_addons/crede_complainer_registration/

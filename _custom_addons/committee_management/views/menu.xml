@@ -6,18 +6,17 @@
               web_icon="committee_management,static/description/icon.png"
               sequence="-100"/>
 
+    <menuitem id="menu_committee_root"
+              name="Committee"
+              action="action_committee_committee"
+              parent="menu_committee_management_root"
+              sequence="1"/>
 
-
-    <menuitem id="menu_committee_meeting"
-              name="Committee Meeting"
-              action="account.res_partner_action_customer"
+        <menuitem id="menu_complainer_root"
+              name="Complainer"
+              action="crede_complainer_registration.action_contacts"
               parent="menu_committee_management_root"
               sequence="2"/>
 
-    <menuitem id="menu_committee_type"
-              name="Committee Type"
-              action="account.res_partner_action_customer"
-              parent="menu_committee_management_root"
-              sequence="3"/>
 
 </odoo>

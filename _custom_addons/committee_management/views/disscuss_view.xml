@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <menuitem id="menu_committee_meeting"
+              name="Committee Meeting"
+              action="mail.action_discuss"
+              parent="menu_committee_root"
+              sequence="2"/>
+</odoo>
