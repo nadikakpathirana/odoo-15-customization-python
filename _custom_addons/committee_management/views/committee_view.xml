@@ -21,7 +21,7 @@
         <field name="name">committee.committee.tree</field>
         <field name="model">committee.committee</field>
         <field name="arch" type="xml">
-            <tree>
+            <tree sample="1">
                 <field name="name" string="Committee Name"/>
                 <field name="title"/>
                 <field name="type"/>
@@ -66,14 +66,14 @@
               name="Committee"
               action="action_committee_committee"
               parent="menu_committee_root"
-              sequence="1"/>
+              sequence="3"/>
 
 
     <menuitem id="menu_committee_type"
               name="Committee Type"
-              action="account.res_partner_action_customer"
+              action="action_committee_committee"
               parent="menu_committee_root"
-              sequence="3"/>
+              sequence="4"/>
 
 
 </odoo>

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="complainer_form" model="ir.ui.view">
+        <field name="name">complainer.form</field>
+        <field name="model">res.partner</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <field name="image_128" widget="image" class="oe_avatar"
+                           options="{&quot;zoom&quot;: true, &quot;preview_image&quot;:&quot;image_128&quot;}"/>
+                    <div class="oe_title">
+                        <h1 class="d-flex">
+                            <field name="complainer_seq" placeholder="Complainer No." required="True"/>
+                        </h1>
+                        <h2>
+                            <field name="name" placeholder="Complainer's Name"/>
+                        </h2>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="complainer_age"/>
+                              <field name="gender"/>
+                            <field name="partner_type"/>
+                        </group>
+                        <group>
+                            <field name="dob"/>
+                            <field name="status"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page name="personal" string="Personal">
+                            <group>
+                                <group>
+                                    <label for="street" string="Address"/>
+                                    <div class="o_address_format">
+                                        <field name="street" placeholder="Street..." class="o_address_street"/>
+                                        <field name="street2" placeholder="Street 2..."
+                                               class="o_address_street"/>
+<!--                                        <field name="city" placeholder="City" class="o_address_city"/>-->
+                                        <field name="state_id" class="o_address_state" placeholder="State"
+                                               options='{"no_open": True}'/>
+                                        <field name="zip" placeholder="ZIP" class="o_address_zip"/>
+                                        <field name="country_id" placeholder="Country" class="o_address_country"
+                                               options='{"no_open": True, "no_create": True}'/>
+                                    </div>
+                                    <field name="phone"/>
+                                    <field name="mobile"/>
+                                    <field name="email"/>
+                                </group>
+                                <group>
+                                    <field name="complainer_profession"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Internal notes">
+                            <field name="notes"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="complainer_tree" model="ir.ui.view">
+        <field name="name">complainer.tree</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" eval="False"/>
+        <field name="arch" type="xml">
+            <tree sample="1">
+                <field name="complainer_seq"/>
+                <field name="name"/>
+                <field name="dob"/>
+                <field name="gender"/>
+                <field name="status"/>
+            </tree>
+        </field>
+    </record>
+    <record id="action_contacts" model="ir.actions.act_window">
+        <field name="name">Complainer</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_mode">kanban,tree,form,activity</field>
+        <field name="search_view_id" ref="base.view_res_partner_filter"/>
+        <field name="view_ids"
+               eval="[(5, 0, 0),
+               (0, 0, {'view_mode': 'tree', 'view_id': ref('crede_complainer_registration.complainer_tree')}),
+               (0, 0, {'view_mode': 'form', 'view_id': ref('crede_complainer_registration.complainer_form')})]"/>
+        <field name="context">{'default_is_company': True}</field>
+        <field name="context">{'default_partner_type': 'complainer'}</field>
+        <field name="domain">[('partner_type','=','complainer')]</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a contact in your address book
+            </p>
+            <p>
+                Crede helps you to easily track all activities related to a complainer.
+            </p>
+        </field>
+    </record>
+
+    <menuitem name="Complainer Registration"
+              id="complainer_root"
+              web_icon="crede_complainer_registration,static/description/icon.png"
+              sequence="9"/>
+    <menuitem name="Complainer"
+              id="crede_complainer_root"
+              parent="complainer_root"
+              sequence="7"/>
+    <menuitem name="Complainer"
+              id="crede_complainer"
+              parent="crede_complainer_root"
+              action="action_contacts"
+              sequence="8"/>
+</odoo>

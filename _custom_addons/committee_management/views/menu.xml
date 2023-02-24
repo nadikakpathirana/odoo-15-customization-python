@@ -8,15 +8,19 @@
 
     <menuitem id="menu_committee_root"
               name="Committee"
-              action="action_committee_committee"
               parent="menu_committee_management_root"
-              sequence="1"/>
+              sequence="2"/>
 
-        <menuitem id="menu_complainer_root"
+<!--    <menuitem id="menu_meeting_root"-->
+<!--              name="Meeting"-->
+<!--              parent="menu_committee_management_root"-->
+<!--              sequence="3"/>-->
+
+    <menuitem id="menu_complainer_root"
               name="Complainer"
               action="crede_complainer_registration.action_contacts"
               parent="menu_committee_management_root"
-              sequence="2"/>
+              sequence="4"/>
 
 
 </odoo>

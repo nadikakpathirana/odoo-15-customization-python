@@ -4,6 +4,6 @@
     <menuitem id="menu_committee_meeting"
               name="Committee Meeting"
               action="mail.action_discuss"
-              parent="menu_committee_root"
-              sequence="2"/>
+              parent="menu_meeting_root"
+              sequence="4"/>
 </odoo>

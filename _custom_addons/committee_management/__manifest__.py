@@ -13,6 +13,7 @@
         'views/menu.xml',
         'views/committee_view.xml',
         'views/complainer_view.xml',
+        # 'views/disscuss_view.xml',
     ],  # use to import xml files
     'demo': [],  # use to import demo data into the system
     'application': True,  # so that module is the main domain(That is a application by itself)
