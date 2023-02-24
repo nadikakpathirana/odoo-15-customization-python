@@ -6,5 +6,20 @@ class CommitteeCommittee(models.Model):
     _description = "Committee model"
 
     name = fields.Char(string='Name')
-    title = fields.Char(string='Title')
-    type = fields.Selection([('type1', 'Type 01'), ('type2', 'Type 02')], string='Type')
+    description = fields.Char(string='Description')
+    location = fields.Char(string='Location')
+    type = fields.Selection([('religious', 'Religious'), ('social', 'Social'), ('cultural', 'Cultural')], string='Type')
+    state = fields.Selection([('new', 'New'), ('approved', 'Approved'), ('banned', 'Banned')],
+                              string='Status', default='new')
+
+    def action_new(self):
+        for rec in self:
+            rec.state = 'new'
+
+    def action_approved(self):
+        for rec in self:
+            rec.state = 'approved'
+
+    def action_banned(self):
+        for rec in self:
+            rec.state = 'banned'

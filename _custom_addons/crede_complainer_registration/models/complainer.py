@@ -39,6 +39,7 @@ class Complainer(models.Model):
 
     notes = fields.Text("Notes")
 
+    @api.depends("dob")
     def _compute_age(self):
         """age calculation of complainer"""
         for rec in self:
@@ -55,7 +56,6 @@ class Complainer(models.Model):
     @api.model
     def create(self, vals):
         if vals.get('complainer_seq', 'New') == 'New':
-            vals['complainer_seq'] = self.env['ir.sequence'].next_by_code(
-                'complainer.sequence') or 'New'
+            vals['complainer_seq'] = self.env['ir.sequence'].next_by_code('complainer.sequence') or 'New'
         result = super(Complainer, self).create(vals)
         return result

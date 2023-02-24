@@ -23,7 +23,8 @@
         <field name="arch" type="xml">
             <tree sample="1">
                 <field name="name" string="Committee Name"/>
-                <field name="title"/>
+                <field name="description"/>
+                <field name="location"/>
                 <field name="type"/>
             </tree>
         </field>
@@ -34,11 +35,18 @@
         <field name="model">committee.committee</field>
         <field name="arch" type="xml">
             <form>
+                <header>
+                    <button name="action_approved" type="object" string="Approve Committee"  states="new" class="oe_highlight"/>
+                    <button name="action_banned" type="object" string="Banned committee" states="approved" class="oe_highlight"/>
+                    <button name="action_approved" type="object" string="Unbanned committee" states="banned" class="oe_highlight"/>
+                    <field name="state" widget="statusbar" statusbar_visible="new,approved,banned"/>
+                </header>
                 <sheet>
                     <group>
                         <group>
                             <field name="name"/>
-                            <field name="title"/>
+                            <field name="description"/>
+                            <field name="location"/>
                         </group>
                         <group>
                             <field name="type"/>
