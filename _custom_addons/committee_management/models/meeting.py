@@ -13,18 +13,20 @@ class CommitteeMeeting(models.Model):
     minutes = fields.Text(string='Minutes')
     attendees = fields.Many2many('res.partner', 'attendees_res_partner', string='Attendees')
     state = fields.Selection([
+        ('pending', 'Pending'),
         ('scheduled', 'Scheduled'),
         ('held', 'Held'),
         ('cancelled', 'Cancelled')
-    ], string='Meeting Status', default='scheduled')
+    ], string='Meeting Status', default='pending')
 
     # @api.multi
     def action_hold_meeting(self):
-        self.state = 'held'
-        return {
-            'type': 'ir.actions.client',
-            'tag': 'reload',
-        }
+        for rec in self:
+            rec.state = 'held'
+            return {
+                'type': 'ir.actions.client',
+                'tag': 'reload',
+            }
 
     # @api.multi
     def action_schedule_meeting(self):
@@ -39,8 +41,9 @@ class CommitteeMeeting(models.Model):
 
     # @api.multi
     def action_cancel_meeting(self):
-        self.state = 'cancelled'
-        return {
-            'type': 'ir.actions.client',
-            'tag': 'reload',
-        }
+        for rec in self:
+            rec.state = 'cancelled'
+            return {
+                'type': 'ir.actions.client',
+                'tag': 'reload',
+            }

@@ -7,6 +7,12 @@
         <field name="arch" type="xml">
             <form string="Committee Meeting">
                 <sheet>
+                    <header>
+<!--                        <button name="action_schedule_meeting" string="Schedule" type="object" class="btn-primary" states="pending,held"/>-->
+                        <button name="action_hold_meeting" string="Hold" type="object" class="btn-primary" states="pending,held,cancelled"/>
+                        <button name="action_cancel_meeting" string="Cancel" type="object" class="btn-danger" states="pending,held,cancelled"/>
+                        <field name="state" widget="statusbar" statusbar_visible="pending,scheduled,held,cancelled"/>
+                    </header>
                     <group>
                         <field name="name" required="1"/>
                         <field name="members"/>
@@ -15,17 +21,17 @@
                         <field name="agenda"/>
                         <field name="minutes"/>
                         <field name="attendees"/>
-                        <field name="state" readonly="1"/>
+                        <field name="state" widget="statusbar" statusbar_visible="pending,scheduled,held,cancelled" readonly="1"/>
 
-                        <div class="oe_title">
-                            <label for="state" class="oe_edit_only" attrs="{'invisible': [('state', '=', 'cancelled')]}"/>
-                            <h2>
-                                <field name="state" widget="statusbar" statusbar_visible="scheduled,held,cancelled"/>
-                                <button name="action_schedule_meeting" string="Schedule" type="object" class="btn-primary" attrs="{'invisible': [('state', '=', 'held')]}"/>
-                                <button name="action_hold_meeting" string="Hold" type="object" class="btn-primary" attrs="{'invisible': [('state', '!=', 'scheduled')]}"/>
-                                <button name="action_cancel_meeting" string="Cancel" type="object" class="btn-danger" attrs="{'invisible': [('state', '!=', 'scheduled')]}"/>
-                            </h2>
-                        </div>
+<!--                        <div class="oe_title">-->
+<!--                            <label for="state" class="oe_edit_only" attrs="{'invisible': [('state', '=', 'pending,scheduled,held,cancelled')]}"/>-->
+<!--                            <h2>-->
+<!--                                <field name="state" widget="statusbar" statusbar_visible="scheduled,held,cancelled"/>-->
+<!--&lt;!&ndash;                                <button name="action_schedule_meeting" string="Schedule" type="object" class="btn-primary" attrs="{'invisible': [('state', '=', 'held')]}"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                                <button name="action_hold_meeting" string="Hold" type="object" class="btn-primary" attrs="{'invisible': [('state', '!=', 'scheduled')]}"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                                <button name="action_cancel_meeting" string="Cancel" type="object" class="btn-danger" attrs="{'invisible': [('state', '!=', 'scheduled')]}"/>&ndash;&gt;-->
+<!--                            </h2>-->
+<!--                        </div>-->
                     </group>
                 </sheet>
             </form>
@@ -41,7 +47,7 @@
                 <field name="members"/>
                 <field name="date"/>
                 <field name="location"/>
-                <field name="state"/>
+                <field name="state" widget="badge" decoration-info="state == 'scheduled'" decoration-muted="state == 'pending'" decoration-success="state == 'held'" decoration-danger="state == 'cancelled'" />
             </tree>
         </field>
     </record>
