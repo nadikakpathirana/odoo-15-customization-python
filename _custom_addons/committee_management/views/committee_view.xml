@@ -21,11 +21,12 @@
         <field name="name">committee.committee.tree</field>
         <field name="model">committee.committee</field>
         <field name="arch" type="xml">
-            <tree sample="1">
+            <tree sample="1" decoration-info="state == 'new'" decoration-success="state == 'approved'" decoration-danger="state == 'banned'">
                 <field name="name" string="Committee Name"/>
                 <field name="description"/>
                 <field name="location"/>
                 <field name="type"/>
+                <field name="state" widget="badge" decoration-info="state == 'new'" decoration-success="state == 'approved'" decoration-danger="state == 'banned'"/>
             </tree>
         </field>
     </record>
