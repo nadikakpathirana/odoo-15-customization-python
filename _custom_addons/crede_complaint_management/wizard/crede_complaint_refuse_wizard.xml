@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<odoo>
+    <!-- complaint refuse wizard and action -->
+    <record id="crede_complaint_refuse_wizard_form_view" model="ir.ui.view">
+        <field name="name">crede.complaint.refuse.wizard.form</field>
+        <field name="model">crede.complaint.refuse.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Complaint">
+                <group>
+                    <group>
+                        <field name="priority" widget="priority" />
+                        <field name="ref_comment" placeholder="Enter Refuse Comment" />
+                    </group>
+                </group>
+                <footer>
+                    <button name="ref_action_ok" string="Ok" type="object" class="btn-primary" />
+
+                    <button string="Cancel" class="btn-secondary" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+    <record id="crede_complaint_refuse_wizard_view_actions" model="ir.actions.act_window">
+        <field name="name">resolve Comment</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">crede.complaint.refuse.wizard</field>
+        <field name="view_mode">form</field>
+    </record>
+</odoo>

@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<odoo>
+    <!-- Complaint Categories views and action -->
+    <record id="crede_complaint_categories_form_view" model="ir.ui.view">
+        <field name="name">crede.complaint.categories.form</field>
+        <field name="model">crede.complaint.categories</field>
+        <field name="arch" type="xml">
+            <form string="Complaint Categories">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name" />
+<!--                            <field name="department" widget="many2many_tags" />-->
+<!--                            <field name="responsible_persons" widget="many2many_tags" />-->
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="crede_complaint_categories_tree_view" model="ir.ui.view">
+        <field name="name">crede.complaint.categories.tree</field>
+        <field name="model">crede.complaint.categories</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" string="Complaint Categories" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="crede_complaint_categorie_search_view" model="ir.ui.view">
+        <field name="name">crede.complaint.categories.search</field>
+        <field name="model">crede.complaint.categories</field>
+        <field name="arch" type="xml">
+            <search string="Complaint Categories">
+                <field name="name" />
+                <group expand="0" string="Group by...">
+                    <filter string="Complaint Categories" name="name" context="{'group_by': 'name'}" />
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="crede_complaint_categories_view_actions" model="ir.actions.act_window">
+        <field name="name">Complaint Categories</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">crede.complaint.categories</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="crede_complaint_management_menu" name="Complaint Management" web_icon="crede_complaint_management,static/description/icon.png"/>
+    <menuitem id="crede_emp_complaint_configure_menu" name="Configuration" parent="crede_complaint_management_menu" sequence="5" />
+    <menuitem id="crede_complaint_menu" name="Complaint" action="crede_complaint_view_actions" parent="crede_complaint_management_menu" sequence="4" />
+
+    <menuitem id="crede_complaint_category_menu" name=" Complaint Category" parent="crede_emp_complaint_configure_menu" action="crede_complaint_categories_view_actions" sequence="7" groups="hr.group_hr_user" />
+    <menuitem id="crede_effect_model_menu" name="Effect On" parent="crede_emp_complaint_configure_menu" action="crede_effect_model_view_actions" sequence="6" groups="hr.group_hr_user" />
+    <menuitem id="crede_complaint_mode_model_menu" name="Mode of Complaint" parent="crede_emp_complaint_configure_menu" action="crede_complaint_mode_model_view_actions" sequence="6"  />
+</odoo>

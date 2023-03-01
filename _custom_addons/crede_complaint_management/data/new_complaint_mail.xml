@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <!-- 	New complaint notification for responsible person -->
+    <record id="send_new_complaint_notification_responsible_user" model="mail.template">
+        <field name="name">Post New Complaint Notification To Responsible Persons </field>
+        <field name="model_id" ref="model_crede_complaint" />
+        <field name="partner_to"></field>
+        <field name="subject">{{object.created_by.company_id.name}} -Complaint {{object.name}} - {{object.subject}}</field>
+        <field name="body_html" type="html">
+            <div style="margin: 0px; padding: 0px;">
+                Hello There,
+                <br />
+                <br />
+                Complaint
+                <b>
+                    <t t-out="object.subject or ''" />
+                </b>
+                -
+                <b>
+                    <t t-out="object.name or ''" />
+                </b>
+                submitted by
+                <b>
+                    <t t-out="object.created_by.partner_id.name or ''" />
+                </b>
+                .
+                <br />
+                <div style="display: inline-block; margin: 15px 0px; text-align: center;">
+                    <a
+                        t-att-href="'/mail/view?model=crede_complaint&amp;res_id=%s'% object.id"
+                        target="_blank"
+                        style="padding: 5px 10px; color: #ffffff; text-decoration: none; background-color: #875a7b; border: 1px solid #875a7b; border-radius: 3px;"
+                    >
+                        Click here to view
+                    </a>
+                </div>
+                <br />
+                Thank you.
+            </div>
+        </field>
+        <field name="lang">{{object.created_by.partner_id.lang}}</field>
+        <field name="auto_delete" eval="True" />
+    </record>
+    <!-- 	Complaint resolve notification for complaint created user	 -->
+    <record id="send_complaint_resolved_notification_created_user" model="mail.template">
+        <field name="name">Complaint Resolved Notification to Created User </field>
+        <field name="model_id" ref="model_crede_complaint" />
+        <field name="partner_to">{{object.created_by.partner_id.id}}</field>
+        <field name="subject">{{object.created_by.company_id.name}} -Complaint {{object.name}} - {{object.subject}} - Resolved</field>
+        <field name="body_html" type="html">
+            <div style="margin: 0px; padding: 0px;">
+                Hello There,
+                <br />
+                <br />
+                Your Complaint
+                <b>
+                    <t t-out="object.subject or ''" />
+                </b>
+                -
+                <b>
+                    <t t-out="object.name or ''" />
+                </b>
+                Resolved by
+                <b>
+                    <t t-out="object.resolved_by.name or ''" />
+                </b>
+                Successfully.
+                <br />
+                <div style="display: inline-block; margin: 15px 0px; text-align: center;">
+                    <a
+                        t-att-href="'/mail/view?model=crede_complaint&amp;res_id=%s'% object.id"
+                        target="_blank"
+                        style="padding: 5px 10px; color: #ffffff; text-decoration: none; background-color: #875a7b; border: 1px solid #875a7b; border-radius: 3px;"
+                    >
+                        Click here to view
+                    </a>
+                </div>
+                <br />
+                Thank you.
+            </div>
+        </field>
+        <field name="lang">{{object.created_by.partner_id.lang}}</field>
+        <field name="auto_delete" eval="True" />
+    </record>
+    <!-- Complaint Refused notification for complaint created user	 -->
+    <record id="send_complaint_refused_notification_created_user" model="mail.template">
+        <field name="name">Complaint Refused Notification to Created User </field>
+        <field name="model_id" ref="model_crede_complaint" />
+        <field name="partner_to">{{object.created_by.partner_id.id}}</field>
+        <field name="subject">{{object.created_by.company_id.name}} -Complaint {{object.name}} - {{object.subject}} - Refused</field>
+        <field name="body_html" type="html">
+            <div style="margin: 0px; padding: 0px;">
+                Hello There,
+                <br />
+                <br />
+                Your Complaint
+                <b>
+                    <t t-out="object.subject or ''" />
+                </b>
+                -
+                <b>
+                    <t t-out="object.name or ''" />
+                </b>
+                Refused by
+                <b>
+                    <t t-out="object.refused_by.name or ''" />
+                </b>
+                .
+                <br />
+                <div style="display: inline-block; margin: 15px 0px; text-align: center;">
+                    <a
+                        t-att-href="'/mail/view?model=crede_complaint&amp;res_id=%s'% object.id"
+                        target="_blank"
+                        style="padding: 5px 10px; color: #ffffff; text-decoration: none; background-color: #875a7b; border: 1px solid #875a7b; border-radius: 3px;"
+                    >
+                        Click here to view
+                    </a>
+                </div>
+                <br />
+                Thank you.
+            </div>
+        </field>
+        <field name="lang">{{object.created_by.partner_id.lang}}</field>
+        <field name="auto_delete" eval="True" />
+    </record>
+</odoo>

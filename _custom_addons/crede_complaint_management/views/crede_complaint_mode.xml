@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<odoo>
+    <!--crede complaint mode views and action -->
+    <record id="crede_complaint_mode_form_view" model="ir.ui.view">
+        <field name="name">crede.complaint.mode.model.form</field>
+        <field name="model">crede.complaint.mode.model</field>
+        <field name="arch" type="xml">
+            <form string="Complaintt mode">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name" />
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="crede_complaint_mode_model_tree_view" model="ir.ui.view">
+        <field name="name">crede.complaint.mode.model.tree</field>
+        <field name="model">crede.complaint.mode.model</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" string="Complaint mode" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="crede_complaint_mode_model_search_view" model="ir.ui.view">
+        <field name="name">crede.complaint.mode.model.search</field>
+        <field name="model">crede.complaint.mode.model</field>
+        <field name="arch" type="xml">
+            <search string="Complaint mode">
+                <field name="name" />
+                <group expand="0" string="Group by...">
+                    <filter string="Effect" name="name" context="{'group_by': 'name'}" />
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="crede_complaint_mode_model_view_actions" model="ir.actions.act_window">
+        <field name="name">Complaint mode</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">crede.complaint.mode.model</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{'default_name':'Online over here'}</field>
+    </record>
+</odoo>
